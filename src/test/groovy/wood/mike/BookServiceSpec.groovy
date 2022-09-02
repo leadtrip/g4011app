@@ -22,7 +22,7 @@ class BookServiceSpec extends Specification implements ServiceUnitTest<BookServi
             new Book(title: 'Mountains', author: author ).save()
             new Book(title: 'Rivers', author: author ).save()
             new Book(title: 'Lakes', author: author ).save()
-            new Book(title: 'Clifs', author: author ).save()
+            new Book(title: 'Cliffs', author: author ).save()
             new Book(title: 'Clouds', author: 'Bob' ).save()
         when:
             def found = service.findBooks( author )
