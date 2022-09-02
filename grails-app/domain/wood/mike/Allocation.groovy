@@ -12,6 +12,14 @@ class Allocation {
     static constraints = {
         departure nullable: true
         offer nullable: false
-        start(unique: ['departure', 'offer'])
+        //start(unique: ['departure', 'offer'])
+        start nullable: false, validator: {value, object ->
+            withNewSession {
+                def alloc = Allocation.findByStartAndDepartureAndOffer(value, object.departure, object.offer)
+                if( alloc && alloc.id != object.id ) {
+                    return 'unique'
+                }
+            }
+        }
     }
 }
